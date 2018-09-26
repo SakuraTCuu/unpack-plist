@@ -51,9 +51,9 @@ def UnpackPngPlist(plist_fileName, png_fileName):
     # dom解析plist文件信息
     dict = ElementTree.fromstring(open(plist_fileName, "r").read())
     plistInfo = getImageData(dict[0])
-
+    print plistInfo
     for k, v in plistInfo["frames"].items():
-        print v
+        # print v
         width = int(v["width"])
         height = int(v["height"])
         x = int(v["x"])
@@ -65,7 +65,7 @@ def UnpackPngPlist(plist_fileName, png_fileName):
             y + height,
         )
         sizelist = [width, height]
-        print rect
+        # print rect
         rect_on_big = all_image.crop(rect)
 
         result_image = Image.new('RGBA', sizelist, (0, 0, 0, 0))
@@ -82,7 +82,7 @@ def UnpackPngPlist(plist_fileName, png_fileName):
 
         # 老版可能存在多级路径
         pathList = k.split("/")
-        print list
+        # print list
         path = ""
         extension = ""
         for pathStr in pathList:
@@ -97,6 +97,7 @@ def UnpackPngPlist(plist_fileName, png_fileName):
         outfile = (path + '/' + extension)
         print outfile, "generated"
         result_image.save(outfile)
+
 
 if __name__ == '__main__':
     # fileName = sys.argv[1]
