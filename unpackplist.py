@@ -80,7 +80,7 @@ def UnpackPngPlist(plist_fileName, png_fileName):
         # result_image.paste(rect_on_big, result_box, mask=0)
         result_image.paste(rect_on_big)
 
-        # 老版可能存在多级路径
+        #多级路径
         pathList = k.split("/")
         # print list
         path = ""
